@@ -34,7 +34,7 @@ directory.
     // add your 
     $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/path/to/silex-extensions');
     $app->register(new SilexExtension\PredisExtension(), array(
-        'predis.class_path'    => __DIR__ . '/../vendor/predis/lib',
+        'predis.class_path'    => __DIR__ . '/vendor/predis/lib',
         'predis.server'  => array(
             'host' => '127.0.0.1',
             'port' => 6379
