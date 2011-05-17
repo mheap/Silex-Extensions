@@ -6,25 +6,20 @@ namespace SilexExtension;
 use Silex\Application;
 use Silex\ExtensionInterface;
 
-use Predis\Client,
-    Predis\DispatcherLoop;
+use Predis\Client, 
+    Predis\ClientOptions,
+    Predis\DispatcherLoop,
+    Predis\ConnectionParameters;
 
 class PredisExtension implements ExtensionInterface
 {
     public function register(Application $app)
     {  
         $app['predis'] = $app->share(function () use ($app) {
-            $config = isset($app['predis.configuration']) ? $app['predis.configuration'] : array();
-            $server = isset($config['server']) ? $config['server'] : array();
-            
-            $client     = new Client($server);
-            // $dispatcher = new DispatcherLoop($client);
-            
-            if(isset($config['dispatcher']) && is_callable($config['dispatcher'])) {
-                // call_user_func_array($config['dispatcher'], array($dispatcher));
-            }
+            $server = isset($app['predis.server']) ? $app['predis.server'] : array();
+            $config = isset($app['predis.config']) ? $app['predis.config'] : array();
         
-            return $client;
+            return new Client(new ConnectionParameters($server), new ClientOptions($config));
         });
         
         

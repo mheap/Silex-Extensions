@@ -8,11 +8,12 @@ $app = new Silex\Application();
 $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/../src');
 $app->register(new SilexExtension\PredisExtension(), array(
     'predis.class_path'    => __DIR__ . '/../vendor/predis/lib',
-    'predis.configuration' => array(
-        'server'    => array(    
-            'host'     => '127.0.0.1',
-            'port'     => 6379
-        )
+    'predis.server'  => array(
+        'host' => '127.0.0.1',
+        'port' => 6379
+    ),
+    'predis.config'  => array(
+        'prefix' => 'predis__'
     )
 ));
 

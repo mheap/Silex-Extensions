@@ -1,30 +1,30 @@
 MongoDbExtension
 ================
 
-The *MongoDbExtension* provides asset to MongoDB instances
+The *MongoDbExtension* provides access to MongoDB instances
 through Doctrine's `MongoDB <https://github.com/doctrine/mongodb>`_
 library.
 
 Parameters
 ----------
 
-* **assetic.connection**: An associative array of arguments for the MongoDB\\Connection class
+* **mongodb.connection**: An associative array of arguments for the MongoDB\\Connection class
 
-* **assetic.connection => server** (optional): The server to connect to. 
+* **mongodb.connection => server** (optional): The server to connect to. 
 
-* **assetic.connection => options** (optional): An associative array of options,
+* **mongodb.connection => options** (optional): An associative array of options,
   passed in as the second argument to the Constructor, see Doctrine\\MongoDB documentation
   for all available options.
 
-* **assetic.connection => configuration** (optional): A callback function to configure 
+* **mongodb.connection => configuration** (optional): A callback function to configure 
   (add logger, ...) the Configuration instance before passing it to the Constructor of the 
   Connection class.
 
-* **assetic.connection => eventmanager** (optional): A callback function to configure 
+* **mongodb.connection => eventmanager** (optional): A callback function to configure 
   (add listener, ...) the EventManager instance before passing it to the Constructor of the 
   Connection class.
 
-* **assetic.class_path** (optional): Path to where the Doctrine MongoDB
+* **mongodb.class_path** (optional): Path to where the Doctrine MongoDB
   library is located.
 
 Services
