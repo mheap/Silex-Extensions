@@ -40,7 +40,7 @@ Services
 Registering
 -----------
 
-Make sure you place a copy of *Doctrine\MongoDB* in the ``vendor/mongodb``
+Make sure you place a copy of *Doctrine\\MongoDB* in the ``vendor/mongodb``
 directory.
 
   Example registration and configuration::
