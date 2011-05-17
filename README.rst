@@ -1,11 +1,12 @@
 Silex Extensions
 ================
 
-Available Extensions?
---------------
+Available Extensions
+--------------------
 
-* MongoDB > MongoDbExtension (Uses Doctrine\\MongoDB library)
 * Redis > PredisExtension (Uses Predis library)
+* MongoDB > MongoDbExtension (Uses Doctrine\\MongoDB library)
+* Gravatar > GravatarExtension (Uses Gravatar-php library)
 
 Installation
 ------------
