@@ -8,12 +8,12 @@ library.
 Parameters
 ----------
 
-* **assetic.connection**: An associative array of arguments for the MongoDB Connection class
+* **assetic.connection**: An associative array of arguments for the MongoDB\\Connection class
 
 * **assetic.connection => server** (optional): The server to connect to. 
 
 * **assetic.connection => options** (optional): An associative array of options,
-  passed in as the second argument to the Constructor, see Doctrine MongoDB documentation
+  passed in as the second argument to the Constructor, see Doctrine\\MongoDB documentation
   for all available options.
 
 * **assetic.connection => configuration** (optional): A callback function to configure 
@@ -30,11 +30,11 @@ Parameters
 Services
 --------
 
-* **mongodb**: Instance of Doctrine MongoDB Connection
+* **mongodb**: Instance of Doctrine\\MongoDB\\Connection
 
-* **mongodb.configuration**: Instance of Doctrine MongoDB Configuration
+* **mongodb.configuration**: Instance of Doctrine\\MongoDB\\Configuration
 
-* **mongodb.event_manager**: Instance of Doctrine Common EventManager
+* **mongodb.event_manager**: Instance of Doctrine\\Common\\EventManager
 
 
 Registering
