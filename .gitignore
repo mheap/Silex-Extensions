@@ -1,2 +1,6 @@
+functions.php
 vendors.sh
 vendor/
+.redcar
+silex.phar
+index.php
