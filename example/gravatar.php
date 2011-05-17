@@ -5,15 +5,21 @@ require_once __DIR__ . '/../silex.phar';
 
 $app = new Silex\Application();
 
+$app->register(new Silex\Extension\TwigExtension(), array(
+    'twig.class_path' => __DIR__ . '/../vendor/twig/lib',
+    'twig.path'       => __DIR__ . '/twig'
+));
+        
 $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/../src');
 $app->register(new SilexExtension\GravatarExtension(), array(
+    'gravatar.class_path' => __DIR__ . '/../vendor/gravatar-php/src',
     'gravatar.options' => array(
-        'size' => 75    
+        'size' => 100    
     )    
 ));
 
 $app->get('/', function() use($app) {
-    return $app['gravatar']->exist('sven.eisenschmidt@gmail.com');
+    return $app['twig']->render('gravatar.twig');
 });
 
 $app->run();

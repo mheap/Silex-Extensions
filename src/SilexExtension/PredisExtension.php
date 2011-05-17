@@ -22,7 +22,6 @@ class PredisExtension implements ExtensionInterface
             return new Client(new ConnectionParameters($server), new ClientOptions($config));
         });
         
-        
         // autoloading the predis library
         if (isset($app['predis.class_path'])) {
             $app['autoloader']->registerNamespace('Predis', $app['predis.class_path']);
