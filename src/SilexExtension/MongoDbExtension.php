@@ -46,7 +46,7 @@ class MongoDbExtension implements ExtensionInterface
             return $app['mongodb']->getConfiguration();
         });
         
-        $app['mongodb.event_manager'] = $app->share(function () use ($app) {
+        $app['mongodb.eventmanager'] = $app->share(function () use ($app) {
             return $app['mongodb']->getEventManager();
         });
         
