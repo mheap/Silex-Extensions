@@ -21,7 +21,7 @@ Parameters
 Services
 --------
 
-* **mongodb**: Instance of Predis\\Client
+* **predis**: Instance of Predis\\Client
 
 Registering
 -----------
