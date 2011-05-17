@@ -4,7 +4,8 @@ Silex Extensions
 Available Extensions?
 --------------
 
-* MongoDbExtension (Uses Doctrine\\MongoDB)
+* MongoDB > MongoDbExtension (Uses Doctrine\\MongoDB library)
+* Redis > PredisDbExtension (Uses Predis library)
 
 Installation
 ------------
