@@ -4,7 +4,7 @@ Silex Extensions
 Available Extensions?
 --------------
 
-* MongoDbExtension (Uses Doctrine\MongoDB)
+* MongoDbExtension (Uses Doctrine\\MongoDB)
 
 Installation
 ------------
