@@ -5,7 +5,7 @@ Available Extensions?
 --------------
 
 * MongoDB > MongoDbExtension (Uses Doctrine\\MongoDB library)
-* Redis > PredisDbExtension (Uses Predis library)
+* Redis > PredisExtension (Uses Predis library)
 
 Installation
 ------------

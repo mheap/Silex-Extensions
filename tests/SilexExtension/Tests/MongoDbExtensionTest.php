@@ -8,11 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 use SilexExtension\MongoDbExtension;
 
-/**
-* MonologExtension test cases.
-*
-* @author Igor Wiedler <igor@wiedler.ch>
-*/
 class MongoDbExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()

@@ -23,7 +23,7 @@ class PredisExtension implements ExtensionInterface
         });
         
         
-        // autoloading the doctrine mongodb library
+        // autoloading the predis library
         if (isset($app['predis.class_path'])) {
             $app['autoloader']->registerNamespace('Predis', $app['predis.class_path']);
         }
