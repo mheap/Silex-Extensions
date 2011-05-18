@@ -31,7 +31,7 @@ directory.
 
   Example registration and configuration::
 
-    // add your 
+    // add SilexExtension library to the autoloader 
     $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/path/to/silex-extensions');
     $app->register(new SilexExtension\PredisExtension(), array(
         'predis.class_path'    => __DIR__ . '/vendor/predis/lib',
