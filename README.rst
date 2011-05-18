@@ -8,6 +8,7 @@ Available Extensions
 * MongoDB > MongoDbExtension (Uses Doctrine\\MongoDB library)
 * Gravatar > GravatarExtension (Uses Gravatar-php library)
 * Mandango ODM for MongoDB > MandangoExtension (Uses Mandango library)
+* Memcache > MemcacheExtension (Can use pecl-memcache or pecl-memcached)
 
 Installation
 ------------
