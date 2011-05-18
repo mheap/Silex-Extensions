@@ -7,6 +7,7 @@ Available Extensions
 * Redis > PredisExtension (Uses Predis library)
 * MongoDB > MongoDbExtension (Uses Doctrine\\MongoDB library)
 * Gravatar > GravatarExtension (Uses Gravatar-php library)
+* Mandango ODM for MongoDB > MandangoExtension (Uses Mandango library)
 
 Installation
 ------------
