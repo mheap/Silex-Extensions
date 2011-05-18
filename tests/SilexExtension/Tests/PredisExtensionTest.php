@@ -59,7 +59,28 @@ class PredisExtensionTest extends \PHPUnit_Framework_TestCase
         $app->handle($request);
         
         $app['predis']->connect();
-
+    }
+    
+    public function testSetAndGet()
+    {
+        $app = new Application();
+        $app->register(new PredisExtension(), array(
+            'predis.class_path' => __DIR__ . '/../../../vendor/predis/lib',
+            'predis.config'  => array(
+                'prefix' => 'predis__'
+            )
+        ));
+            
+        $app->get('/', function() use($app) {
+            $app['predis'];    
+        });
+        $request = Request::create('/');
+        $app->handle($request);
+            
+        $testvalue = 'my_test_value'; 
+        $app['predis']->set('my_test_key', $testvalue);
+        
+        $this->assertSame($testvalue, $app['predis']->get('my_test_key'));
     }
     
     

@@ -43,3 +43,11 @@ directory.
             'prefix' => 'predis__'
         )
     ));
+    
+Usage
+-----
+
+    $app->get('/', function() use($app) {
+        $app['predis']->set('my_value', 'somevalue');
+        $value = $app['predis']->get('my_value');
+    });
