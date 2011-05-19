@@ -2,7 +2,7 @@ EmbedlyExtension
 ================
 
 The *EmbedlyExtension* provides access to the Embed.ly web service
-through Sven Eisenschmidts's fork of`Embedly-php <https://github.com/fate/embedly-php>`_
+through Sven Eisenschmidts's fork of `Embedly-php <https://github.com/fate/embedly-php>`_
 library.
 
 Parameters
