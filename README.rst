@@ -6,6 +6,7 @@ Collection of extensions for `Silex <https://github.com/fabot/silex>`_.
 Available Extensions
 --------------------
 
+* **AsseticExtension** (Assetic asset management library)
 * **EmbedlyExtension** (embed.ly web service, uses embedly-php fork)
 * **GravatarExtension** (gravatar.com web service, uses grvatar-php library)
 * **MandangoExtension** (Mandango ODM for MongoDB NoSQL database)

@@ -6,3 +6,4 @@ git clone https://github.com/fate/Gravatar-php.git 	      vendor/gravatar-php
 git clone https://github.com/mandango/mandango.git        vendor/mandango
 git clone https://github.com:fate/embedly-php.git         vendor/embedly-php
 git clone https://github.com/knplabs/MarkdownBundle.git   vendor/knplabs-markdown/Knplabs/Bundle/MarkdownBundle
+git clone https://github.com/kriswallsmith/assetic.git    vendor/assetic

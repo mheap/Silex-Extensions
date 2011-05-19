@@ -1,6 +1,5 @@
 <?php
 
-
 namespace SilexExtension;
 
 use Silex\Application;

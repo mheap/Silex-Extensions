@@ -7,8 +7,7 @@ KpnLab's `MarkdownBundle <https://github.com/knplabs/MarkdownBundle>`_ .
 Parameters
 ----------
 
-* **markdown.features** (optional): An associative of features with boolean values
-for configuring the KnpLab's Markdown parser
+* **markdown.features** (optional): An associative of features with boolean values for configuring the KnpLab's Markdown parser
 
 * **markdown.class_path** (optional): Path to where the MarkdownBundle library is located.
 
