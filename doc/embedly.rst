@@ -35,7 +35,7 @@ directory.
     $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/path/to/silex-extensions');
     $app->register(new SilexExtension\EmbedlyExtension(), array(
         'embedly.class_path' => __DIR__ . '/vendor/embedly-php/src',
-        'embedly.cache_dir'  => sys_get_temp_dir() . '/gravatar',
+        'embedly.cache_dir'  => sys_get_temp_dir() . '/embedly',
         'embedly.cache_ttl'  => 240, // 240 seconds
         'embedly.options' => array(
             'user_agent' => 'My custom user agent',
