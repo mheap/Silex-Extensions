@@ -18,6 +18,7 @@ Available Extensions
 Extensions with Twig Support
 ----------------------------
 
+* **AsseticExtension**
 * **EmbedlyExtension**
 * **GravatarExtension**
 * **MarkdownExtension**
