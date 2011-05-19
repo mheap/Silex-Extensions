@@ -7,6 +7,8 @@ use Silex\Application;
 use Silex\ExtensionInterface;
 
 use Gravatar\Service,
+    Gravatar\Cache\FilesystemCache,
+    Gravatar\Cache\ExpiringCache,
     Gravatar\Extension\Twig\GravatarExtension as TwigGravatarExtension;
 
 class GravatarExtension implements ExtensionInterface
@@ -15,8 +17,18 @@ class GravatarExtension implements ExtensionInterface
     {  
         $app['gravatar'] = $app->share(function () use ($app) {
             $options = isset($app['gravatar.options']) ? $app['gravatar.options'] : array();
-            return new Service($options);
+            return new Service($options, $app['gravatar.cache']);
         });  
+        
+        $app['gravatar.cache'] = $app->share(function () use ($app) {
+            $cache = null;
+            if(isset($app['gravatar.cache_dir'])) {
+                $ttl   = isset($app['gravatar.cache_ttl']) ? $app['gravatar.cache_ttl'] : 360;
+                $file  = new FilesystemCache($app['gravatar.cache_dir']);
+                $cache = new ExpiringCache($file, $ttl);
+            }
+            return $cache;
+        }); 
         
         // autoloading the predis library
         if (isset($app['gravatar.class_path'])) {

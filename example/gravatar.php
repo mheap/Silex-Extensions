@@ -13,6 +13,8 @@ $app->register(new Silex\Extension\TwigExtension(), array(
 $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/../src');
 $app->register(new SilexExtension\GravatarExtension(), array(
     'gravatar.class_path' => __DIR__ . '/../vendor/gravatar-php/src',
+    'gravatar.cache_dir'  => sys_get_temp_dir() . '/gravatar',
+    'gravatar.cache_ttl'  => 500,
     'gravatar.options' => array(
         'size' => 100    
     )    

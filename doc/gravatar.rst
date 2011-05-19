@@ -1,5 +1,5 @@
 GravatarExtension
-================
+=================
 
 The *GravatarExtension* provides access to the Gravatar web service
 through Sven Eisenschmidts's `Gravatar <https://github.com/fate/Gravatar-php>`_
@@ -8,7 +8,11 @@ library.
 Parameters
 ----------
 
-* **gravatar.options**: An associative array of arguments for the Gravatar\\Service class
+* **gravatar.cache_dir** (optional): A directory to cache the direct web service calls to gravatar.com
+
+* **gravatar.cache_ttl** (optional): The time how long a cache entry will live, defaults to 360 seconds. 
+
+* **gravatar.options** (optional): An associative array of arguments for the Gravatar\\Service class
 
 * **gravatar.class_path** (optional): Path to where the Gravatar library is located.
 
@@ -30,6 +34,8 @@ directory.
     $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/path/to/silex-extensions');
     $app->register(new SilexExtension\GravatarExtension(), array(
         'gravatar.class_path' => __DIR__ . '/vendor/gravatar-php/src',
+        'gravatar.cache_dir'  => sys_get_temp_dir() . '/gravatar',
+        'gravatar.cache_ttl'  => 240, // 240 seconds
         'gravatar.options' => array(
             'size' => 100,
             'rating' => Gravatar\Service::RATING_G,
