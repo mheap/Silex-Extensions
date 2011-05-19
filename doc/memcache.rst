@@ -7,7 +7,7 @@ either through pecl-memcache or pecl-memcached
 Parameters
 ----------
 
-* **memcache.library** (optional): Which library should be uses, memcache or memcache**d**,
+* **memcache.library** (optional): Which library should be uses, memcache or memcached,
   by default *memcached*
 
 * **memcache.server** (optional): An array servers which are added via addSever, please be aware

@@ -4,11 +4,13 @@ Silex Extensions
 Available Extensions
 --------------------
 
-* Redis > PredisExtension (Uses Predis library)
-* MongoDB > MongoDbExtension (Uses Doctrine\\MongoDB library)
-* Gravatar > GravatarExtension (Uses Gravatar-php library)
-* Mandango ODM for MongoDB > MandangoExtension (Uses Mandango library)
-* Memcache > MemcacheExtension (Can use pecl-memcache or pecl-memcached)
+* **EmbedlyExtension** (embed.ly web service, uses embedly-php fork)
+* **GravatarExtension** (gravatar.com web service, uses grvatar-php library)
+* **MandangoExtension** (Mandango ODM for MongoDB NoSQL database)
+* **MarkdownExtension** (*not yet released*)
+* **MemcacheExtension** (Memcache caching layer, non-permanent key/value store, uses pecl-memcache or pecl-memcached)
+* **MongoDbExtension** (MongoDB NoSQL database, uses Doctrine\\MongoDB library)
+* **PredisExtension** (Redis key/value store, uses Predis php library)
 
 Installation
 ------------
@@ -16,6 +18,14 @@ Installation
 Run the following commands inside your Silex directory:
 
     git clone git@github.com:fate/Silex-Extensions.git vendor/silex-extension
+    
+To install vendor depedencies run 
+
+    sh ./vendors.sh
+    
+And install all submodules in vendor/mongodb and vendor/mandango
+
+    git submodule update --init
  
 Add the library to the Silex autoloader
 

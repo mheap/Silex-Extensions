@@ -21,7 +21,7 @@ Services
 Registering
 -----------
 
-Make sure you place a copy of *Doctrine\\MongoDB* in the ``vendor/mongodb``
+Make sure you place a copy of *Gravatar* in the ``vendor/gravatar-php``
 directory.
 
   Example registration and configuration::
