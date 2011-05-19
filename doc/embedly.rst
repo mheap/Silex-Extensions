@@ -57,6 +57,6 @@ directory.
         
     });
     
-  In Twig templates you can do the following
+  In Twig templates you can do the following::
 
     {{ embedly_oembed('http://www.youtube.com/watch?v=c9BA5e2Of_U').html|raw }}

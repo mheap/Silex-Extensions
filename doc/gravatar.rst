@@ -43,7 +43,7 @@ directory.
         return $app['gravatar']->get('sven.eisenschmidt@gmail.com');
     });
     
-  In Twig templates you can do the following
+  In Twig templates you can do the following::
 
     {% if gravatar_exist('sven.eisenschmidt@gmail.com') %}
         Gravatar found

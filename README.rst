@@ -1,8 +1,7 @@
 Silex Extensions
 ================
 
-Fully tested collection of extensions for `Silex <https://github.com/fabot/silex>`_.
-
+Collection of extensions for `Silex <https://github.com/fabot/silex>`_.
 
 Available Extensions
 --------------------
@@ -10,10 +9,17 @@ Available Extensions
 * **EmbedlyExtension** (embed.ly web service, uses embedly-php fork)
 * **GravatarExtension** (gravatar.com web service, uses grvatar-php library)
 * **MandangoExtension** (Mandango ODM for MongoDB NoSQL database)
-* **MarkdownExtension** (*not yet released*)
+* **MarkdownExtension** (Markdown support, uses KnpLabs\\MarkdownBundle)
 * **MemcacheExtension** (Memcache caching layer, non-permanent key/value store, uses pecl-memcache or pecl-memcached)
 * **MongoDbExtension** (MongoDB NoSQL database, uses Doctrine\\MongoDB library)
 * **PredisExtension** (Redis key/value store, uses Predis php library)
+
+Extensions with Twig Support
+----------------------------
+
+* **EmbedlyExtension**
+* **GravatarExtension**
+* **MarkdownExtension**
 
 Installation
 ------------
