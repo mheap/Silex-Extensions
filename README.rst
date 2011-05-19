@@ -1,6 +1,9 @@
 Silex Extensions
 ================
 
+Fully tested collection of extensions for `Silex <https://github.com/fabot/silex>`_.
+
+
 Available Extensions
 --------------------
 
