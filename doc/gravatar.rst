@@ -10,16 +10,18 @@ Parameters
 
 * **gravatar.cache_dir** (optional): A directory to cache the direct web service calls to gravatar.com
 
-* **gravatar.cache_ttl** (optional): The time how long a cache entry will live, defaults to 360 seconds. 
+* **gravatar.cache_ttl** (optional): The time how long a cache entry will live, defaults to 360 seconds 
 
 * **gravatar.options** (optional): An associative array of arguments for the Gravatar\\Service class
 
-* **gravatar.class_path** (optional): Path to where the Gravatar library is located.
+* **gravatar.class_path** (optional): Path to where the Gravatar library is located
 
 Services
 --------
 
 * **gravatar**: Instance of Gravatar\\Service
+
+* **gravatar.cache**: The cache layer if one is configured
 
 
 Registering
