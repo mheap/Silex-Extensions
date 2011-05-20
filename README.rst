@@ -30,7 +30,7 @@ Run the following commands inside your Silex directory:
 
     git clone git@github.com:fate/Silex-Extensions.git vendor/silex-extension
     
-To install vendor depedencies run 
+To install vendor depedencies, copy vendors.sh in your root directory and run 
 
     sh ./vendors.sh
     
