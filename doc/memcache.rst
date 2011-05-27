@@ -7,11 +7,11 @@ either through pecl-memcache or pecl-memcached
 Parameters
 ----------
 
-* **memcache.library** (optional): Which library should be uses, memcache or memcached,
+* **memcache.library** (optional): library to use, memcache or memcached,
   by default *memcached*
 
 * **memcache.server** (optional): An array servers which are added via addSever, please be aware
-  that memcache and memcache**d** have different method signatures after the second argument for
+  that memcache and memcached* have different method signatures after the second argument for
   addServer. See `Memcache <http://de2.php.net/manual/en/memcache.addserver.php>` and
   `Memcached <http://de2.php.net/manual/en/memcache.addserver.php>`
 
