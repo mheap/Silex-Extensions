@@ -58,15 +58,7 @@ class AsseticExtension implements ExtensionInterface
             $factory->setFilterManager($app['assetic.filter_manager']);
             return $factory;
         });
-        
-        
-        /**
-         * Initializes Assetic
-         */
-        $app->before(function() use($app) {
-            $app['assetic'];
-        });
-        
+
         /**
          * Writes down all lazy asset manager and asset managers assets
          */
@@ -137,17 +129,19 @@ class AsseticExtension implements ExtensionInterface
                     ));
                 }
             }
-            return $lazy;    
+            return $lazy;
+        });
+
+        $app->before(function () use ($app) {
+            // twig support
+            if (isset($app['twig'])) {
+                $app['twig']->addExtension(new TwigAsseticExtension($app['assetic.factory']));
+            }
         });
             
         // autoloading the assetic library
         if (isset($app['assetic.class_path'])) {
             $app['autoloader']->registerNamespace('Assetic', $app['assetic.class_path']);
-        }
-        
-        // twig support
-        if(isset($app['twig'])) {
-            $app['twig']->addExtension(new TwigAsseticExtension($app['assetic.factory']));
         }
     }
 }
