@@ -22,9 +22,7 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
         $app->register(new AsseticExtension(), array(
             'assetic.class_path' => __DIR__ . '/../../../../vendor/assetic/src',
-            'assetic.options' => array(
-                'path_to_web' => sys_get_temp_dir()
-            )
+            'assetic.path_to_web' => sys_get_temp_dir()
         ));
         $app->get('/', function () use ($app) {
             return 'AsseticExtensionTest';
@@ -45,9 +43,7 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
         $app->register(new AsseticExtension(), array(
             'assetic.class_path' => __DIR__ . '/../../../../vendor/assetic/src',
-            'assetic.options' => array(
-                'path_to_web' => sys_get_temp_dir()
-            ),
+            'assetic.path_to_web' => sys_get_temp_dir(),
             'assetic.filters' => $app->protect(function($fm) {
                 $fm->set('test_filter', new \Assetic\Filter\CssMinFilter());
             })
@@ -68,9 +64,7 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
         $app->register(new AsseticExtension(), array(
             'assetic.class_path' => __DIR__ . '/../../../../vendor/assetic/src',
-            'assetic.options' => array(
-                'path_to_web' => sys_get_temp_dir()
-            ),
+            'assetic.path_to_web' => sys_get_temp_dir(),
             'assetic.assets' => $app->protect(function($am) {
                 $asset = new \Assetic\Asset\FileAsset(__FILE__);
                 $asset->setTargetUrl(md5(__FILE__));

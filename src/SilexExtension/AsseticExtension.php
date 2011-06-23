@@ -44,10 +44,7 @@ class AsseticExtension implements ExtensionInterface
          */
         $app['assetic.factory'] = $app->share(function() use ($app) {
             $options = $app['assetic.options'];
-            if (!isset($options['path_to_web'])) {
-                throw new \Exception("Missing option 'path_to_web' in assetic.options");
-            }
-            $factory = new AssetFactory($options['path_to_web'], $options['debug']);
+            $factory = new AssetFactory($app['assetic.path_to_web'], $options['debug']);
             $factory->setAssetManager($app['assetic.asset_manager']);
             $factory->setFilterManager($app['assetic.filter_manager']);
             return $factory;
@@ -64,10 +61,10 @@ class AsseticExtension implements ExtensionInterface
         });
 
         /**
-         * Asset writer, writes to the 'path_to_web' folder
+         * Asset writer, writes to the 'assetic.path_to_web' folder
          */
         $app['assetic.asset_writer'] = $app->share(function () use ($app) {
-            return new AssetWriter($app['assetic.options']['path_to_web']);
+            return new AssetWriter($app['assetic.path_to_web']);
         });
 
         /**
