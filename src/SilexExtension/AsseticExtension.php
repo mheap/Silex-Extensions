@@ -18,21 +18,15 @@ class AsseticExtension implements ExtensionInterface
 {
     public function register(Application $app)
     {
-        /**
-         * Default options
-         */
-        $options = array(
-            'debug'         => false,
+        $app['assetic.options'] = array_replace(array(
+            'debug' => false,
             'formulae_cache_dir' => null,
-        );
-
+        ), isset($app['assetic.options']) ? $app['assetic.options'] : array());
+        
         /**
          * Asset Factory conifguration happens here
          */
-        $app['assetic'] = $app->share(function () use ($app, $options) {
-            $app['assetic.options'] = isset($app['assetic.options'])
-                ? array_merge($options, $app['assetic.options']) : $options;
-
+        $app['assetic'] = $app->share(function () use ($app) {
             // initializing lazy asset manager
             if (isset($app['assetic.formulae']) &&
                !is_array($app['assetic.formulae']) &&
