@@ -13,11 +13,10 @@ $app->register(new Silex\Extension\TwigExtension(), array(
 $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/../src');
 $app->register(new SilexExtension\AsseticExtension(), array(
     'assetic.class_path' => __DIR__.'/../vendor/assetic/src',
+    'assetic.path_to_web' => __DIR__ . '/assetic/output',
     'assetic.options' => array(
-        'formulae_cache_dir'     => __DIR__ . '/assetic/cache',
-        'twig_support'  => true,
-        'path_to_web'   => __DIR__ . '/assetic/output',
-        'debug'         => false
+        'formulae_cache_dir' => __DIR__ . '/assetic/cache',
+        'debug' => false
     ),
     'assetic.filters' => $app->protect(function($fm) {
         $fm->set('yui_css', new Assetic\Filter\Yui\CssCompressorFilter(
