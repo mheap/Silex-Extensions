@@ -8,11 +8,9 @@ library.
 Parameters
 ----------
 
-* **assetic.options**: An associative array of assetic
-  options.
+* **assetic.path_to_web**: Location where to dump all generated files
 
-* **assetic.options => path_to_web**: Location where to dump
-  all generated files
+* **assetic.options**: An associative array of assetic options.
 
 * **assetic.options => debug** (defaults to false, optional): 
 
@@ -74,8 +72,9 @@ directory.
 
     $app->register(new Silex\Extension\AsseticExtension(), array(
         'assetic.class_path' => __DIR__.'/vendor/assetic/src',
+        'assetic.path_to_web' => __DIR__ . '/assets',
         'assetic.options' => array(
-            'path_to_web'           => __DIR__ . '/assets'
+        	'debug' => TRUE
         ),
         'assetic.filters' => $app->protect(function($fm) {
             $fm->set('yui_css', new Assetic\Filter\Yui\CssCompressorFilter(
