@@ -70,7 +70,7 @@ directory.
 
   Example registration and configuration::
 
-    $app->register(new Silex\Extension\AsseticExtension(), array(
+    $app->register(new SilexExtension\AsseticExtension(), array(
         'assetic.class_path' => __DIR__.'/vendor/assetic/src',
         'assetic.path_to_web' => __DIR__ . '/assets',
         'assetic.options' => array(
