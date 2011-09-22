@@ -4,10 +4,10 @@
 namespace SilexExtension;
 
 use Silex\Application;
-use Silex\ExtensionInterface;
+use Silex\ServiceProviderInterface;
 
 
-class MemcacheExtension implements ExtensionInterface
+class MemcacheExtension implements ServiceProviderInterface
 {
     public function register(Application $app)
     {  

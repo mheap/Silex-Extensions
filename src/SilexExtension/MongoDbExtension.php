@@ -4,13 +4,13 @@
 namespace SilexExtension;
 
 use Silex\Application;
-use Silex\ExtensionInterface;
+use Silex\ServiceProviderInterface;
 
 use Doctrine\MongoDB\Connection,
     Doctrine\MongoDB\Configuration,
     Doctrine\Common\EventManager;
 
-class MongoDbExtension implements ExtensionInterface
+class MongoDbExtension implements ServiceProviderInterface
 {
     public function register(Application $app)
     {   

@@ -3,14 +3,14 @@
 namespace SilexExtension;
 
 use Silex\Application;
-use Silex\ExtensionInterface;
+use Silex\ServiceProviderInterface;
 
 use Embedly\Embedly,
     Embedly\Cache\FilesystemCache,
     Embedly\Cache\ExpiringCache,
     Embedly\Extension\Twig\EmbedlyExtension as TwigEmbedlyExtension;
 
-class EmbedlyExtension implements ExtensionInterface
+class EmbedlyExtension implements ServiceProviderInterface
 {
     public function register(Application $app)
     {  
