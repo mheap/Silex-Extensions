@@ -4,14 +4,14 @@
 namespace SilexExtension;
 
 use Silex\Application;
-use Silex\ExtensionInterface;
+use Silex\ServiceProviderInterface;
 
 use Predis\Client, 
     Predis\ClientOptions,
     Predis\DispatcherLoop,
     Predis\ConnectionParameters;
 
-class PredisExtension implements ExtensionInterface
+class PredisExtension implements ServiceProviderInterface
 {
     public function register(Application $app)
     {  

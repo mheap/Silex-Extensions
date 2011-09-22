@@ -4,14 +4,14 @@
 namespace SilexExtension;
 
 use Silex\Application;
-use Silex\ExtensionInterface;
+use Silex\ServiceProviderInterface;
 
 use Gravatar\Service,
     Gravatar\Cache\FilesystemCache,
     Gravatar\Cache\ExpiringCache,
     Gravatar\Extension\Twig\GravatarExtension as TwigGravatarExtension;
 
-class GravatarExtension implements ExtensionInterface
+class GravatarExtension implements ServiceProviderInterface
 {
     public function register(Application $app)
     {  
