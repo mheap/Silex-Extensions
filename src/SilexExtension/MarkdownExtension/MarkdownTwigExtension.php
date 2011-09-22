@@ -3,7 +3,7 @@
 
 namespace SilexExtension\MarkdownExtension;
 
-use Knplabs\Bundle\MarkdownBundle\Parser\MarkdownParser;
+use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser;
 
 class MarkdownTwigExtension extends \Twig_Extension
 {

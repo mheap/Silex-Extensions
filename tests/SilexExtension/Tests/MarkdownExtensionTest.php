@@ -34,8 +34,8 @@ class MarkdownExtensionTest extends \PHPUnit_Framework_TestCase
 My Headline
 =====
 EOT;
-        
-        $this->assertInstanceOf('\Knplabs\Bundle\MarkdownBundle\Parser\MarkdownParser', $app['markdown']);
+
+        $this->assertInstanceOf('\Knp\Bundle\MarkdownBundle\Parser\MarkdownParser', $app['markdown']);
         $this->assertContains('<h1>My Headline</h1>', $app['markdown']->transform($text));
     }
     
