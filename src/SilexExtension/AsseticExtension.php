@@ -3,7 +3,7 @@
 namespace SilexExtension;
 
 use Silex\Application;
-use Silex\ExtensionInterface;
+use Silex\ServiceProviderInterface;
 
 use Assetic\AssetManager,
     Assetic\FilterManager,
@@ -14,7 +14,7 @@ use Assetic\AssetManager,
     Assetic\Cache\FilesystemCache,
     Assetic\Extension\Twig\AsseticExtension as TwigAsseticExtension;
 
-class AsseticExtension implements ExtensionInterface
+class AsseticExtension implements ServiceProviderInterface
 {
     public function register(Application $app)
     {

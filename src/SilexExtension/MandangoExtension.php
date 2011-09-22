@@ -4,14 +4,14 @@
 namespace SilexExtension;
 
 use Silex\Application;
-use Silex\ExtensionInterface;
+use Silex\ServiceProviderInterface;
 
 use Mandango\Mandango,
     Mandango\Connection,
     Mandango\Cache\FilesystemCache;
 
 use Mandango\Mondator\Mondator;
-class MandangoExtension implements ExtensionInterface
+class MandangoExtension implements ServiceProviderInterface
 {
     public function register(Application $app)
     {  
