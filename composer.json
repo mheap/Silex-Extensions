@@ -15,10 +15,14 @@
     "require": {
         "php": ">=5.3.2",
         "silex/silex": ">=1.0.0-dev"
-    },
+    }, 
     "suggest": {
-        "predis/predis": "0.7.0-dev",
-        "twig/twig": "1.5.0-dev"
+        "twig/twig": "1.5.0-dev",
+        "kriswallsmith/assetic" : "*",
+        "knplabs/knp-markdown-bundle": "*",
+        "ext/memcached": "*",
+        "doctrine/mongodb-odm": "*",
+        "predis/predis": "v0.7.1"
     },
     "autoload": {
         "psr-0": { "SilexExtension": "src/" }
