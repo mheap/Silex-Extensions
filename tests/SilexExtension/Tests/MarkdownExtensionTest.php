@@ -12,8 +12,8 @@ class MarkdownExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        if (!is_dir(__DIR__ . '/../../../vendor/embedly-php/src')) {
-            $this->markTestSkipped('Embedly was not installed.');
+        if (!class_exists('Knp\\Bundle\\MarkdownBundle\\Parser\\MarkdownParser')) {
+            $this->markTestSkipped('Knp Markdown Bundle was not installed.');
         }
     }
 
