@@ -7,7 +7,7 @@ use Silex\Application;
 use Silex\ServiceProviderInterface;
 
 use Predis\Client, 
-    Predis\ClientOptions,
+    Predis\Option\ClientOptions,
     Predis\DispatcherLoop,
     Predis\ConnectionParameters;
 

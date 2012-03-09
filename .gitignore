@@ -2,6 +2,7 @@ functions.php
 vendor/
 .redcar
 silex.phar
+composer.phar
 example/odm/Model
 example/assetic/output/*
 example/assetic/cache/*

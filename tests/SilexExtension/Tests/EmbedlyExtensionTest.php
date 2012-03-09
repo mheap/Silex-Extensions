@@ -14,7 +14,7 @@ class EmbedlyExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        if (!is_dir(__DIR__ . '/../../../vendor/embedly-php/src')) {
+        if (!class_exists('Embedly\\Embedly')) {
             $this->markTestSkipped('Embedly was not installed.');
         }
     }

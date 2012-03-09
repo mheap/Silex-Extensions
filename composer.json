@@ -1,0 +1,124 @@
+{
+    "name": "fate/silex-extensions",
+    "description": "Collection of Extensions for Silex",
+    "keywords": ["silex"],
+    "homepage": "https://github.com/fate/Silex-Extensions",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+    {
+        "name": "Sven Eisenschmidt",
+        "email": "sven.eisenschmidt@gmail.com",
+        "homepage": "http://unsicherheitsagent.de/"
+    }
+    ],
+    "repositories": [
+    {
+        "type":"package",
+        "package": {
+            "name":"mandango/mondator",
+            "version":"master",
+            "dist":{
+                "url":"https://github.com/mandango/mondator/zipball/5685054409a76b41c27573e4bc17523f8236551a",
+                "type":"zip"
+            },
+            "source": {
+                "url":"git://github.com/mandango/mondator.git",
+                "type":"git",
+                "reference": "master"
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mandango\\Mondator":"src"
+                }
+            }
+        }
+    },
+    {
+        "type":"package",
+        "package": {
+            "name":"mandango/mandango",
+            "version":"master",
+            "dist":{
+                "url":"https://github.com/mandango/mandango/zipball/957d6c6f54c8ed0762ab63b16a057d1e631bc002",
+                "type":"zip"
+            },
+            "source": {
+                "url":"git://github.com/mandango/mandango.git",
+                "type":"git",
+                "reference": "master"
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mandango\\Mandango":"src"
+                }
+            },
+            "require": {
+                "symfony/class-loader": ">=2.0.0",
+                "twig/twig": ">=1.2",
+                "mandango/mondator": "*"
+            }
+        }
+    },
+    {
+        "type":"package",
+        "package": {
+            "name":"fate/gravatar-php",
+            "version":"master",
+            "dist":{
+                "url":"https://github.com/fate/Gravatar-php/zipball/957d6c6f54c8ed0762ab63b16a057d1e631bc002",
+                "type":"zip"
+            },
+            "source": {
+                "url":"git://github.com/fate/Gravatar-php.git",
+                "type":"git",
+                "reference": "master"
+            },
+            "autoload": {
+                "psr-0": {
+                    "Gravatar":"src"
+                }
+            }
+        }
+    },
+    {
+        "type":"package",
+        "package": {
+            "name":"embedly/embedly-php",
+            "version":"master",
+            "dist":{
+                "url":"https://github.com/embedly/embedly-php/zipball/fc30b795a97fb79af67cf6c23733a439dd94e8d1",
+                "type":"zip"
+            },
+            "source": {
+                "url":"git://github.com/embedly/embedly-php.git",
+                "type":"git",
+                "reference": "master"
+            },
+            "autoload": {
+                "psr-0": {
+                    "Embedly":"src"
+                }
+            }
+        }
+    }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "kriswallsmith/assetic": ">=1.0",
+        "twig/twig": ">=1.2.0",
+        "doctrine/mongodb": "*",
+        "predis/predis": "*",
+        "mandango/mandango": "*",
+        "knplabs/knp-markdown-bundle": "*",
+        "embedly/embedly-php": "*",
+        "fate/gravatar-php": "*"
+    },
+    "autoload": {
+        "psr-0": { 
+            "SilexExtension": "src"
+        }
+    }
+    
+}
