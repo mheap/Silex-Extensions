@@ -12,7 +12,7 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        if (!is_dir(__DIR__ . '/../../../vendor/assetic/src')) {
+        if (!class_exists('Assetic\\AssetManager')) {
             $this->markTestSkipped('Assetic was not installed.');
         }
     }

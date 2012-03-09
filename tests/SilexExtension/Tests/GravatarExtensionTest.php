@@ -14,7 +14,7 @@ class GravatarExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        if (!is_dir(__DIR__ . '/../../../vendor/gravatar-php/src')) {
+        if (!class_exists('Gravatar\\Service')) {
             $this->markTestSkipped('Gravatar was not installed.');
         }
     }

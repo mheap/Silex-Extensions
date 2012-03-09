@@ -26,18 +26,20 @@ Extensions with Twig Support
 Installation
 ------------
 
-Run the following commands inside your Silex directory:
+Create a composer.json in your projects root-directory
 
-    git clone git@github.com:fate/Silex-Extensions.git vendor/silex-extension
-    
-To install vendor depedencies, copy vendors.sh in your root directory and run 
+    {
+        "require": {
+            "fate/Silex-Extensions": "*"
+        }
+    }
 
-    sh ./vendors.sh
-    
-And install all submodules in vendor/mongodb and vendor/mandango
+and run
 
-    git submodule update --init
- 
+    curl -s http://getcomposer.org/installer | php
+    php composer.phar install
+
+
 Add the library to the Silex autoloader
 
     $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/vendor/silex-extension/src');
