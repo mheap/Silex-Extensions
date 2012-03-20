@@ -26,7 +26,7 @@ Extensions with Twig Support
 Installation
 ------------
 
-Create a composer.json in your projects root-directory
+Create a composer.json in your projects root-directory::
 
     {
         "require": {
@@ -34,13 +34,13 @@ Create a composer.json in your projects root-directory
         }
     }
 
-and run
+and run::
 
     curl -s http://getcomposer.org/installer | php
     php composer.phar install
 
 
-Add the library to the Silex autoloader
+Add the library to the Silex autoloader::
 
     $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/vendor/silex-extension/src');
 
