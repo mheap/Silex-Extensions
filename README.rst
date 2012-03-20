@@ -8,7 +8,7 @@ Available Extensions
 
 * **AsseticExtension** (Assetic asset management library)
 * **EmbedlyExtension** (embed.ly web service, uses embedly-php fork)
-* **GravatarExtension** (gravatar.com web service, uses grvatar-php library)
+* **GravatarExtension** (gravatar.com web service, uses gravatar-php library)
 * **MandangoExtension** (Mandango ODM for MongoDB NoSQL database)
 * **MarkdownExtension** (Markdown support, uses KnpLabs\\MarkdownBundle)
 * **MemcacheExtension** (Memcache caching layer, non-permanent key/value store, uses pecl-memcache or pecl-memcached)
