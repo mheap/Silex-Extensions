@@ -5,7 +5,6 @@
     "homepage": "https://github.com/fate/Silex-Extensions",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.0",
     "authors": [
     {
         "name": "Sven Eisenschmidt",
@@ -58,27 +57,6 @@
                 "symfony/class-loader": ">=2.0.0",
                 "twig/twig": ">=1.2",
                 "mandango/mondator": "*"
-            }
-        }
-    },
-    {
-        "type":"package",
-        "package": {
-            "name":"fate/gravatar-php",
-            "version":"master",
-            "dist":{
-                "url":"https://github.com/fate/Gravatar-php/zipball/957d6c6f54c8ed0762ab63b16a057d1e631bc002",
-                "type":"zip"
-            },
-            "source": {
-                "url":"git://github.com/fate/Gravatar-php.git",
-                "type":"git",
-                "reference": "master"
-            },
-            "autoload": {
-                "psr-0": {
-                    "Gravatar":"src"
-                }
             }
         }
     },
