@@ -8,7 +8,7 @@ Available Extensions
 
 * **AsseticExtension** (Assetic asset management library)
 * **EmbedlyExtension** (embed.ly web service, uses embedly-php fork)
-* **GravatarExtension** (gravatar.com web service, uses grvatar-php library)
+* **GravatarExtension** (gravatar.com web service, uses gravatar-php library)
 * **MandangoExtension** (Mandango ODM for MongoDB NoSQL database)
 * **MarkdownExtension** (Markdown support, uses KnpLabs\\MarkdownBundle)
 * **MemcacheExtension** (Memcache caching layer, non-permanent key/value store, uses pecl-memcache or pecl-memcached)
@@ -26,7 +26,7 @@ Extensions with Twig Support
 Installation
 ------------
 
-Create a composer.json in your projects root-directory
+Create a composer.json in your projects root-directory::
 
     {
         "require": {
@@ -34,13 +34,13 @@ Create a composer.json in your projects root-directory
         }
     }
 
-and run
+and run::
 
     curl -s http://getcomposer.org/installer | php
     php composer.phar install
 
 
-Add the library to the Silex autoloader
+Add the library to the Silex autoloader::
 
     $app['autoloader']->registerNamespace('SilexExtension', __DIR__ . '/vendor/silex-extension/src');
 
