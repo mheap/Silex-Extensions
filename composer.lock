@@ -1,5 +1,5 @@
 {
-    "hash": "5322ad016699a4eaca7c2538712f4332",
+    "hash": "a599392b49153295c4431f1afdab2c40",
     "packages": [
         {
             "package": "doctrine/common",
@@ -8,7 +8,7 @@
         {
             "package": "doctrine/mongodb",
             "version": "dev-master",
-            "source-reference": "d7fdcff25b9534e67abbd557bf75250cbef62b31"
+            "source-reference": "727a12d25ba12d18aa293bc6eb61f203a9545912"
         },
         {
             "package": "embedly/embedly-php",
@@ -17,8 +17,8 @@
         },
         {
             "package": "fate/gravatar-php",
-            "version": "master",
-            "source-reference": "master"
+            "version": "dev-master",
+            "source-reference": "0c5df5962b565af47245949e52bc1778ac356439"
         },
         {
             "package": "knplabs/knp-markdown-bundle",
@@ -43,32 +43,32 @@
         {
             "package": "predis/predis",
             "version": "dev-master",
-            "source-reference": "785670dcf77654be0e63be8ff524c375a59498e7"
+            "source-reference": "5b6e4dc3ddc01fd1a40622d8e45f722cd7f84ca0"
         },
         {
             "package": "symfony/class-loader",
             "version": "dev-master",
-            "source-reference": "8bceaa2f1fed52f6285b2cea39e7ae37fbea1c9b"
+            "source-reference": "da83c40b126ce8622fc052332b2c54a135ed976c"
         },
         {
             "package": "symfony/config",
             "version": "dev-master",
-            "source-reference": "8674185c90b5373c998e8dbb41128ef1ed0f8acd"
+            "source-reference": "2360cb2273784f2b356c43dbcecfe1804730ee8d"
         },
         {
             "package": "symfony/console",
             "version": "dev-master",
-            "source-reference": "2ee50c7c845ef7f8bce9c540709ecfd64cbcda87"
+            "source-reference": "5fcd408b7b34f3e544f9743cf33e179767e9a000"
         },
         {
             "package": "symfony/dependency-injection",
             "version": "dev-master",
-            "source-reference": "c097d6610a82cec38d4c3876d6215516de151602"
+            "source-reference": "64912f0a30b6c6db887980dd6299769033526fd2"
         },
         {
             "package": "symfony/event-dispatcher",
             "version": "dev-master",
-            "source-reference": "f6b7f60b0c29ab8167de7d7c9ba78fc9cc283c64"
+            "source-reference": "502614d7dcd2260d0adaef19a344cbd42aa29adf"
         },
         {
             "package": "symfony/filesystem",
@@ -78,27 +78,27 @@
         {
             "package": "symfony/framework-bundle",
             "version": "dev-master",
-            "source-reference": "6cfca7c62d3574a206439e321601101f4cf55d76"
+            "source-reference": "87048631486c2fd05c468f3ee9a94668c8bba24b"
         },
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "2abe7f1b8e0f808dad0cc001b9d69371b604d719"
+            "source-reference": "ec8ce75d0ec64dfe6de235a7c92282bae066532d"
         },
         {
             "package": "symfony/http-kernel",
             "version": "dev-master",
-            "source-reference": "cf2bb8655a13fcb516b1d0b95ddf0c51db25b2a8"
+            "source-reference": "cb9201083399274f54437b8177bf983fc185f404"
         },
         {
             "package": "symfony/process",
             "version": "dev-master",
-            "source-reference": "6aceac404d8574cf7da57e7e29b00a665b7bd559"
+            "source-reference": "8cf4f692dacd94261548c12e90ef310a609a054c"
         },
         {
             "package": "symfony/routing",
             "version": "dev-master",
-            "source-reference": "d3d9c02357b2db6503539d11f6c379ccd86f9cc4"
+            "source-reference": "db09d0ee5032ab1320966ba7610c576ce7fb1368"
         },
         {
             "package": "symfony/templating",
@@ -108,7 +108,7 @@
         {
             "package": "symfony/translation",
             "version": "dev-master",
-            "source-reference": "b7a4c59a34ce2c7b470e10e22e9bf47e21634156"
+            "source-reference": "fdb2cdd093893b7912c98940f4dd6aacae66bdee"
         },
         {
             "package": "symfony/yaml",
@@ -118,7 +118,7 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "9f322ab2fd21fc70ad58ee62facc0eb5ed2b9db8"
+            "source-reference": "6e2fd68e7b62d91692a7adfb959475ab9b840d99"
         }
     ],
     "aliases": []
