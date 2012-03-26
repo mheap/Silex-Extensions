@@ -50,7 +50,7 @@
             },
             "autoload": {
                 "psr-0": {
-                    "Mandango\\Mandango":"src"
+                    "Mandango":"src"
                 }
             },
             "require": {
@@ -94,9 +94,9 @@
         "fate/gravatar-php": "*"
     },
     "autoload": {
-        "psr-0": { 
+        "psr-0": {
             "SilexExtension": "src"
         }
     }
-    
+
 }
