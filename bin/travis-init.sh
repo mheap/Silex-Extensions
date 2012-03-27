@@ -18,4 +18,4 @@ echo "extension=mongo.so" >> `php --ini | grep "Loaded Configuration" | sed -e "
 wget silex-project.org/get/silex.phar
 
 wget http://getcomposer.org/composer.phar
-php composer.phar install
+php composer.phar install --install-suggests
