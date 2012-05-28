@@ -13,6 +13,11 @@ use Gravatar\Service,
 
 class GravatarExtension implements ServiceProviderInterface
 {
+    public function boot(Application $app)
+    {
+
+    }
+
     public function register(Application $app)
     {  
         $app['gravatar'] = $app->share(function () use ($app) {

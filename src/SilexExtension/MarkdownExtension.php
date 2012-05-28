@@ -11,6 +11,11 @@ use SilexExtension\MarkdownExtension\MarkdownTwigExtension;
 
 class MarkdownExtension implements ServiceProviderInterface
 {
+    public function boot(Application $app)
+    {
+
+    }
+
     public function register(Application $app)
     {
         $app['markdown'] = $app->share(function () use ($app) {

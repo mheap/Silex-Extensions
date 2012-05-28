@@ -12,6 +12,11 @@ use Doctrine\MongoDB\Connection,
 
 class MongoDbExtension implements ServiceProviderInterface
 {
+    public function boot(Application $app)
+    {
+
+    }
+
     public function register(Application $app)
     {   
         /**
