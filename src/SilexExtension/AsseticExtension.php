@@ -135,4 +135,13 @@ class AsseticExtension implements ServiceProviderInterface
             $app['autoloader']->registerNamespace('Assetic', $app['assetic.class_path']);
         }
     }
+
+    /**
+     * Bootstraps the application.
+     *
+     * @param \Silex\Application $app The application
+     */
+    function boot(Application $app)
+    {
+    }
 }
