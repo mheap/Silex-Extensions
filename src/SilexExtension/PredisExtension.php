@@ -13,6 +13,11 @@ use Predis\Client,
 
 class PredisExtension implements ServiceProviderInterface
 {
+    public function boot(Application $app)
+    {
+
+    }
+
     public function register(Application $app)
     {  
         $app['predis'] = $app->share(function () use ($app) {

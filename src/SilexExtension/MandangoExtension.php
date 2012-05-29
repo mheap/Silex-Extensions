@@ -13,6 +13,11 @@ use Mandango\Mandango,
 use Mandango\Mondator\Mondator;
 class MandangoExtension implements ServiceProviderInterface
 {
+    public function boot(Application $app)
+    {
+
+    }
+
     public function register(Application $app)
     {  
                  

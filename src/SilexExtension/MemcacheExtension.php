@@ -9,6 +9,11 @@ use Silex\ServiceProviderInterface;
 
 class MemcacheExtension implements ServiceProviderInterface
 {
+    public function boot(Application $app)
+    {
+
+    }
+
     public function register(Application $app)
     {  
         $app['memcache'] = $app->share(function () use ($app) {

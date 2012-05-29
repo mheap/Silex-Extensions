@@ -12,6 +12,11 @@ use Embedly\Embedly,
 
 class EmbedlyExtension implements ServiceProviderInterface
 {
+    public function boot(Application $app)
+    {
+
+    }
+
     public function register(Application $app)
     {  
         $app['embedly'] = $app->share(function () use ($app) {
