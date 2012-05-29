@@ -16,11 +16,6 @@ use Assetic\AssetManager,
 
 class AsseticExtension implements ServiceProviderInterface
 {
-    public function boot(Application $app)
-    {
-
-    }
-
     public function register(Application $app)
     {
         $app['assetic.options'] = array_replace(array(
