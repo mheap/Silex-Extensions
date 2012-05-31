@@ -23,11 +23,6 @@ class MarkdownExtension implements ServiceProviderInterface
             return new MarkdownParser($features);
         });
 
-        // autoloading the predis library
-        if (isset($app['markdown.class_path'])) {
-            $app['autoloader']->registerNamespace('Knp\\Bundle\\MarkdownBundle', $app['markdown.class_path']);
-        }
-
         if (isset($app['twig'])) {
             $app['twig']->addExtension(new MarkdownTwigExtension($app['markdown']));
         }

@@ -19,12 +19,12 @@ class GravatarExtension implements ServiceProviderInterface
     }
 
     public function register(Application $app)
-    {  
+    {
         $app['gravatar'] = $app->share(function () use ($app) {
             $options = isset($app['gravatar.options']) ? $app['gravatar.options'] : array();
             return new Service($options, $app['gravatar.cache']);
-        });  
-        
+        });
+
         $app['gravatar.cache'] = $app->share(function () use ($app) {
             $cache = null;
             if(isset($app['gravatar.cache_dir'])) {
@@ -33,13 +33,8 @@ class GravatarExtension implements ServiceProviderInterface
                 $cache = new ExpiringCache($file, $ttl);
             }
             return $cache;
-        }); 
-        
-        // autoloading the predis library
-        if (isset($app['gravatar.class_path'])) {
-            $app['autoloader']->registerNamespace('Gravatar', $app['gravatar.class_path']);
-        }  
-        
+        });
+
         if (isset($app['twig'])) {
             $app['twig']->addExtension(new TwigGravatarExtension($app['gravatar']));
         }
