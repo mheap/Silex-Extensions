@@ -22,7 +22,7 @@ class AsseticExtension implements ServiceProviderInterface
             'debug' => false,
             'formulae_cache_dir' => null,
         ), isset($app['assetic.options']) ? $app['assetic.options'] : array());
-        
+
         /**
          * Asset Factory conifguration happens here
          */
@@ -129,11 +129,6 @@ class AsseticExtension implements ServiceProviderInterface
                 $app['twig']->addExtension(new TwigAsseticExtension($app['assetic.factory']));
             }
         });
-
-        // autoloading the assetic library
-        if (isset($app['assetic.class_path'])) {
-            $app['autoloader']->registerNamespace('Assetic', $app['assetic.class_path']);
-        }
     }
 
     /**
