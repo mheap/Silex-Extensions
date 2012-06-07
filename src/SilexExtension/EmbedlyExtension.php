@@ -18,12 +18,12 @@ class EmbedlyExtension implements ServiceProviderInterface
     }
 
     public function register(Application $app)
-    {  
+    {
         $app['embedly'] = $app->share(function () use ($app) {
             $options = isset($app['embedly.options']) ? $app['embedly.options'] : array();
             return new Embedly($options, $app['embedly.cache']);
-        });  
-        
+        });
+
         $app['embedly.cache'] = $app->share(function () use ($app) {
             $cache = null;
             if(isset($app['embedly.cache_dir'])) {
@@ -32,13 +32,8 @@ class EmbedlyExtension implements ServiceProviderInterface
                 $cache = new ExpiringCache($file, $ttl);
             }
             return $cache;
-        }); 
-        
-        // autoloading the predis library
-        if (isset($app['embedly.class_path'])) {
-            $app['autoloader']->registerNamespace('Embedly', $app['embedly.class_path']);
-        }  
-        
+        });
+
         // enable twig extension
         if (isset($app['twig'])) {
             $app['twig']->addExtension(new TwigEmbedlyExtension($app['embedly']));
