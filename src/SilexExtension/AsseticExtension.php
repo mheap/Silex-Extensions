@@ -123,12 +123,12 @@ class AsseticExtension implements ServiceProviderInterface
             return $lazy;
         });
 
-        $app->before(function () use ($app) {
-            // twig support
-            if (isset($app['twig'])) {
-                $app['twig']->addExtension(new TwigAsseticExtension($app['assetic.factory']));
-            }
-        });
+        if(isset($app['twig'])) {
+            $app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
+                $twig->addExtension(new TwigAsseticExtension($app['assetic.factory']));
+                return $twig;
+            }));
+        }
     }
 
     /**
