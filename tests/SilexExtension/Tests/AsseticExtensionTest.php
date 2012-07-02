@@ -84,6 +84,27 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(file_exists(sys_get_temp_dir() . '/' . md5(__FILE__)));
     }
 
+    public function testTwigAddExtension()
+    {
+        if (!class_exists('Twig_Environment')) {
+            $this->markTestSkipped('Twig was not installed.');
+        }
+
+        $app = new Application();
+
+        $app['twig'] = $app->share(function() {
+            $loader = new \Twig_Loader_String();
+            return new \Twig_Environment($loader);
+        });
+
+        $app->register(new AsseticExtension(), array(
+            'assetic.class_path'  => __DIR__ . '/../../../vendor/assetic/src',
+            'assetic.path_to_web' => sys_get_temp_dir()
+        ));
+
+        $this->assertInstanceOf('Assetic\\Extension\\Twig\\AsseticExtension', $app['twig']->getExtension('assetic'));
+    }
+
     public function tearDown()
     {
         if (file_exists(sys_get_temp_dir() . '/' . md5(__FILE__))) {
