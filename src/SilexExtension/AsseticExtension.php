@@ -60,10 +60,10 @@ class AsseticExtension implements ServiceProviderInterface
         $self = $this;
         $app->after(function() use ($app, $self) {
             if (true === $app['assetic.options']['debug'] && isset($app['twig'])) {
-                $self->addTwigAssets($app['assetic.lazy_asset_manager'], $app['twig'], $app['twig.loader.filesystem']);
+                $self::addTwigAssets($app['assetic.lazy_asset_manager'], $app['twig'], $app['twig.loader.filesystem']);
             }
-            $self->dumpAssets($app['assetic.lazy_asset_manager'], $app['assetic.asset_writer']);
-            $self->dumpAssets($app['assetic.asset_manager'],      $app['assetic.asset_writer']);
+            $self::dumpAssets($app['assetic.lazy_asset_manager'], $app['assetic.asset_writer']);
+            $self::dumpAssets($app['assetic.asset_manager'],      $app['assetic.asset_writer']);
         });
 
         /**
@@ -144,7 +144,7 @@ class AsseticExtension implements ServiceProviderInterface
      * @param \Twig_Environment        $twig
      * @param \Twig_Loader_Filesystem  $loader
      */
-    public function addTwigAssets(LazyAssetManager $am, \Twig_Environment $twig, \Twig_Loader_Filesystem $loader)
+    public static function addTwigAssets(LazyAssetManager $am, \Twig_Environment $twig, \Twig_Loader_Filesystem $loader)
     {
         $am->setLoader('twig', new TwigFormulaLoader($twig));
         
@@ -166,7 +166,7 @@ class AsseticExtension implements ServiceProviderInterface
      * @param AssetManager $am
      * @param AssetWriter  $writer
      */
-    public function dumpAssets(AssetManager $am, AssetWriter $writer)
+    public static function dumpAssets(AssetManager $am, AssetWriter $writer)
     {
         foreach ($am->getNames() as $name) {
             $asset   = $am->get($name);
@@ -185,7 +185,7 @@ class AsseticExtension implements ServiceProviderInterface
                 foreach ($asset as $leaf) {
                     $writer->writeAsset($leaf);
                 } 
-            }    
+            }
         }
     }
     
