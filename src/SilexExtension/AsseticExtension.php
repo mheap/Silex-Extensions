@@ -2,7 +2,7 @@
 
 namespace SilexExtension;
 
-use Symfony\Component\Finder\Finder;
+use SilexExtension\Helper\Assetic;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
@@ -15,7 +15,6 @@ use Assetic\AssetManager,
     Assetic\Factory\LazyAssetManager,
     Assetic\Cache\FilesystemCache,
     Assetic\Extension\Twig\TwigFormulaLoader,
-    Assetic\Extension\Twig\TwigResource,
     Assetic\Extension\Twig\AsseticExtension as TwigAsseticExtension;
 
 class AsseticExtension implements ServiceProviderInterface
@@ -57,13 +56,14 @@ class AsseticExtension implements ServiceProviderInterface
         /**
          * Writes down all lazy asset manager and asset managers assets
          */
-        $self = $this;
-        $app->after(function() use ($app, $self) {
+        $app->after(function() use ($app) {
+            $helper = $app['assetic.helper'];
+            
             if (true === $app['assetic.options']['debug'] && isset($app['twig'])) {
-                $self::addTwigAssets($app['assetic.lazy_asset_manager'], $app['twig'], $app['twig.loader.filesystem']);
+                $helper->addTwigAssets();
             }
-            $self::dumpAssets($app['assetic.lazy_asset_manager'], $app['assetic.asset_writer']);
-            $self::dumpAssets($app['assetic.asset_manager'],      $app['assetic.asset_writer']);
+            
+            $helper->dumpAssets();
         });
 
         /**
@@ -117,7 +117,7 @@ class AsseticExtension implements ServiceProviderInterface
             foreach ($formulae as $name => $formula) {
                 $lazy->setFormula($name, $formula);
             }
-
+           
             if ($options['formulae_cache_dir'] !== null && $options['debug'] !== true) {
                 foreach ($lazy->getNames() as $name) {
                     $lazy->set($name, new AssetCache(
@@ -128,67 +128,29 @@ class AsseticExtension implements ServiceProviderInterface
             }
             return $lazy;
         });
+        
+        $app['assetic.helper'] = $app->share(function () use ($app) {
+            return new Assetic($app['assetic.asset_manager'], $app['assetic.lazy_asset_manager'], $app['assetic.asset_writer']);
+        });
 
         if(isset($app['twig'])) {
             $app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
                 $twig->addExtension(new TwigAsseticExtension($app['assetic.factory']));
                 return $twig;
             }));
+            
+            $app['assetic.lazy_asset_manager'] = $app->share($app->extend('assetic.lazy_asset_manager', function ($am, $app) {
+                $am->setLoader('twig', new TwigFormulaLoader($app['twig']));
+                return $am;
+            }));
+            
+            $app['assetic.helper'] = $app->share($app->extend('assetic.helper', function ($helper, $app) {
+                $helper->setTwig($app['twig'], $app['twig.loader.filesystem']);
+                return $helper;
+            }));     
         }
     }
-    
-    /**
-     * Locates twig templates and adds their defined assets to the lazy asset manager
-     * 
-     * @param LazyAssetManager         $am
-     * @param \Twig_Environment        $twig
-     * @param \Twig_Loader_Filesystem  $loader
-     */
-    public static function addTwigAssets(LazyAssetManager $am, \Twig_Environment $twig, \Twig_Loader_Filesystem $loader)
-    {
-        $am->setLoader('twig', new TwigFormulaLoader($twig));
-        
-        $finder   = new Finder();
-        $iterator = $finder->files()->name('*.twig')->in($loader->getPaths());
-        
-        foreach ($iterator as $file) {
-            $resource = new TwigResource($loader, $file->getRelativePathname());
-            $am->addResource($resource, 'twig');
-        }
-    }
-    
-    /**
-     * Dumps the assets of given manager with given writer.
-     * 
-     * Doesn't use AssetWriter::writeManagerAssets since we also want to dump non-combined assets 
-     * (for example, when using twig extension in debug mode).
-     * 
-     * @param AssetManager $am
-     * @param AssetWriter  $writer
-     */
-    public static function dumpAssets(AssetManager $am, AssetWriter $writer)
-    {
-        foreach ($am->getNames() as $name) {
-            $asset   = $am->get($name);
-            
-            $formula = $am->getFormula($name);
-            
-            $writer->writeAsset($asset);
-            
-            if (!isset($formula[2])) {
-                continue;
-            }
-            $debug   = isset($formula[2]['debug'])   ? $formula[2]['debug']   : $am->isDebug();
-            $combine = isset($formula[2]['combine']) ? $formula[2]['combine'] : null;
-            
-            if ((null !== $combine && !$combine) || $debug) {
-                foreach ($asset as $leaf) {
-                    $writer->writeAsset($leaf);
-                } 
-            }
-        }
-    }
-    
+  
     /**
      * Bootstraps the application.
      *
