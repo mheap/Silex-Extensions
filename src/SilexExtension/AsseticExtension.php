@@ -2,6 +2,8 @@
 
 namespace SilexExtension;
 
+use Symfony\Component\Finder\Finder;
+
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
@@ -12,6 +14,8 @@ use Assetic\AssetManager,
     Assetic\Factory\AssetFactory,
     Assetic\Factory\LazyAssetManager,
     Assetic\Cache\FilesystemCache,
+    Assetic\Extension\Twig\TwigFormulaLoader,
+    Assetic\Extension\Twig\TwigResource,
     Assetic\Extension\Twig\AsseticExtension as TwigAsseticExtension;
 
 class AsseticExtension implements ServiceProviderInterface
@@ -49,15 +53,17 @@ class AsseticExtension implements ServiceProviderInterface
             $factory->setFilterManager($app['assetic.filter_manager']);
             return $factory;
         });
-
+        
         /**
          * Writes down all lazy asset manager and asset managers assets
          */
-        $app->after(function() use ($app) {
-            $app['assetic.asset_writer']->writeManagerAssets(
-                $app['assetic.lazy_asset_manager']);
-            $app['assetic.asset_writer']->writeManagerAssets(
-                $app['assetic.asset_manager']);
+        $self = $this;
+        $app->after(function() use ($app, $self) {
+            if (true === $app['assetic.options']['debug'] && isset($app['twig'])) {
+                $self->addTwigAssets($app['assetic.lazy_asset_manager'], $app['twig'], $app['twig.loader.filesystem']);
+            }
+            $self->dumpAssets($app['assetic.lazy_asset_manager'], $app['assetic.asset_writer']);
+            $self->dumpAssets($app['assetic.asset_manager'],      $app['assetic.asset_writer']);
         });
 
         /**
@@ -130,7 +136,59 @@ class AsseticExtension implements ServiceProviderInterface
             }));
         }
     }
-
+    
+    /**
+     * Locates twig templates and adds their defined assets to the lazy asset manager
+     * 
+     * @param LazyAssetManager         $am
+     * @param \Twig_Environment        $twig
+     * @param \Twig_Loader_Filesystem  $loader
+     */
+    public function addTwigAssets(LazyAssetManager $am, \Twig_Environment $twig, \Twig_Loader_Filesystem $loader)
+    {
+        $am->setLoader('twig', new TwigFormulaLoader($twig));
+        
+        $finder   = new Finder();
+        $iterator = $finder->files()->name('*.twig')->in($loader->getPaths());
+        
+        foreach ($iterator as $file) {
+            $resource = new TwigResource($loader, $file->getRelativePathname());
+            $am->addResource($resource, 'twig');
+        }
+    }
+    
+    /**
+     * Dumps the assets of given manager with given writer.
+     * 
+     * Doesn't use AssetWriter::writeManagerAssets since we also want to dump non-combined assets 
+     * (for example, when using twig extension in debug mode).
+     * 
+     * @param AssetManager $am
+     * @param AssetWriter  $writer
+     */
+    public function dumpAssets(AssetManager $am, AssetWriter $writer)
+    {
+        foreach ($am->getNames() as $name) {
+            $asset   = $am->get($name);
+            
+            $formula = $am->getFormula($name);
+            
+            $writer->writeAsset($asset);
+            
+            if (!isset($formula[2])) {
+                continue;
+            }
+            $debug   = isset($formula[2]['debug'])   ? $formula[2]['debug']   : $am->isDebug();
+            $combine = isset($formula[2]['combine']) ? $formula[2]['combine'] : null;
+            
+            if ((null !== $combine && !$combine) || $debug) {
+                foreach ($asset as $leaf) {
+                    $writer->writeAsset($leaf);
+                } 
+            }    
+        }
+    }
+    
     /**
      * Bootstraps the application.
      *

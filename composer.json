@@ -87,6 +87,7 @@
     },
     "suggest": {
         "kriswallsmith/assetic": ">=1.0",
+        "symfony/finder": "2.1.*",
         "twig/twig": ">=1.2.0",
         "doctrine/mongodb": "*",
         "predis/predis": "*",
