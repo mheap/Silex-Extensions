@@ -24,6 +24,7 @@ class AsseticExtension implements ServiceProviderInterface
         $app['assetic.options'] = array_replace(array(
             'debug' => false,
             'formulae_cache_dir' => null,
+            'auto_dump_assets' => true,
         ), isset($app['assetic.options']) ? $app['assetic.options'] : array());
 
         /**
@@ -52,14 +53,17 @@ class AsseticExtension implements ServiceProviderInterface
             $factory->setFilterManager($app['assetic.filter_manager']);
             return $factory;
         });
-        
+
         /**
          * Writes down all lazy asset manager and asset managers assets
          */
         $app->after(function() use ($app) {
-            $helper = $app['assetic.helper'];
+            if (false === $app['assetic.options']['auto_dump_assets']) {
+                return;
+            }
             
-            if (true === $app['assetic.options']['debug'] && isset($app['twig'])) {
+            $helper = $app['assetic.helper'];
+            if (isset($app['twig'])) {
                 $helper->addTwigAssets();
             }
             
