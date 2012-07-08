@@ -2,7 +2,7 @@
 
 namespace SilexExtension;
 
-use SilexExtension\Helper\Assetic;
+use SilexExtension\Assetic\Dumper;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
@@ -62,7 +62,7 @@ class AsseticExtension implements ServiceProviderInterface
                 return;
             }
             
-            $helper = $app['assetic.helper'];
+            $helper = $app['assetic.dumper'];
             if (isset($app['twig'])) {
                 $helper->addTwigAssets();
             }
@@ -133,8 +133,8 @@ class AsseticExtension implements ServiceProviderInterface
             return $lazy;
         });
         
-        $app['assetic.helper'] = $app->share(function () use ($app) {
-            return new Assetic($app['assetic.asset_manager'], $app['assetic.lazy_asset_manager'], $app['assetic.asset_writer']);
+        $app['assetic.dumper'] = $app->share(function () use ($app) {
+            return new Dumper($app['assetic.asset_manager'], $app['assetic.lazy_asset_manager'], $app['assetic.asset_writer']);
         });
 
         if(isset($app['twig'])) {
@@ -148,7 +148,7 @@ class AsseticExtension implements ServiceProviderInterface
                 return $am;
             }));
             
-            $app['assetic.helper'] = $app->share($app->extend('assetic.helper', function ($helper, $app) {
+            $app['assetic.dumper'] = $app->share($app->extend('assetic.dumper', function ($helper, $app) {
                 $helper->setTwig($app['twig'], $app['twig.loader.filesystem']);
                 return $helper;
             }));     

@@ -1,6 +1,6 @@
 <?php
 
-namespace SilexExtension\Helper;
+namespace SilexExtension\Dumper;
 
 use Symfony\Component\Finder\Finder;
 
@@ -9,7 +9,7 @@ use Assetic\Factory\LazyAssetManager,
     Assetic\AssetManager,
     Assetic\Extension\Twig\TwigResource;
 
-class Assetic
+class Dumper
 {
     /**
      * @var AssetManager
