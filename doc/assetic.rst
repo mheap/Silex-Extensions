@@ -65,6 +65,9 @@ Services
         array('output' => 'css/extra')  
     ));
 
+* **assetic.helper**:  Instance of SilexExtension\Helper\Assetic. Contains methods
+  to dump assets.
+  
 Registering
 -----------
 
