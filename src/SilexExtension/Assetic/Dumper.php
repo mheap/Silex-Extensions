@@ -1,6 +1,6 @@
 <?php
 
-namespace SilexExtension\Dumper;
+namespace SilexExtension\Assetic;
 
 use Symfony\Component\Finder\Finder;
 
