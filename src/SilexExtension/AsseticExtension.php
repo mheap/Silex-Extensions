@@ -58,7 +58,7 @@ class AsseticExtension implements ServiceProviderInterface
          * Writes down all lazy asset manager and asset managers assets
          */
         $app->after(function() use ($app) {
-            if (false === $app['assetic.options']['auto_dump_assets']) {
+            if (!isset($app['assetic.options']['auto_dump_assets'])) {
                 return;
             }
             
