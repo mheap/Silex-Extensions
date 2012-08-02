@@ -18,6 +18,9 @@ Parameters
   will cache assets generated trough formulae in this folder to improve performance. Remember,
   assets added trough the AssetManager need to care about their own cache.
 
+* **assetic.options => auto_dump_assets** (defaults to true,optional): Whether to write all the assets
+  to filesystem on every request.
+
 * **assetic.class_path** (optional): Path to where the Assetic
   library is located.
 
@@ -62,6 +65,9 @@ Services
         array('output' => 'css/extra')  
     ));
 
+* **assetic.dumper**:  Instance of SilexExtension\Assetic\Dumper. Contains methods
+  to dump assets.
+  
 Registering
 -----------
 

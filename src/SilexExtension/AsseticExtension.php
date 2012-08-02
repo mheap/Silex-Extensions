@@ -2,6 +2,8 @@
 
 namespace SilexExtension;
 
+use SilexExtension\Assetic\Dumper;
+
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
@@ -12,6 +14,7 @@ use Assetic\AssetManager,
     Assetic\Factory\AssetFactory,
     Assetic\Factory\LazyAssetManager,
     Assetic\Cache\FilesystemCache,
+    Assetic\Extension\Twig\TwigFormulaLoader,
     Assetic\Extension\Twig\AsseticExtension as TwigAsseticExtension;
 
 class AsseticExtension implements ServiceProviderInterface
@@ -21,6 +24,7 @@ class AsseticExtension implements ServiceProviderInterface
         $app['assetic.options'] = array_replace(array(
             'debug' => false,
             'formulae_cache_dir' => null,
+            'auto_dump_assets' => true,
         ), isset($app['assetic.options']) ? $app['assetic.options'] : array());
 
         /**
@@ -54,10 +58,16 @@ class AsseticExtension implements ServiceProviderInterface
          * Writes down all lazy asset manager and asset managers assets
          */
         $app->after(function() use ($app) {
-            $app['assetic.asset_writer']->writeManagerAssets(
-                $app['assetic.lazy_asset_manager']);
-            $app['assetic.asset_writer']->writeManagerAssets(
-                $app['assetic.asset_manager']);
+            if (false === $app['assetic.options']['auto_dump_assets']) {
+                return;
+            }
+            
+            $helper = $app['assetic.dumper'];
+            if (isset($app['twig'])) {
+                $helper->addTwigAssets();
+            }
+            
+            $helper->dumpAssets();
         });
 
         /**
@@ -111,7 +121,7 @@ class AsseticExtension implements ServiceProviderInterface
             foreach ($formulae as $name => $formula) {
                 $lazy->setFormula($name, $formula);
             }
-
+           
             if ($options['formulae_cache_dir'] !== null && $options['debug'] !== true) {
                 foreach ($lazy->getNames() as $name) {
                     $lazy->set($name, new AssetCache(
@@ -122,15 +132,29 @@ class AsseticExtension implements ServiceProviderInterface
             }
             return $lazy;
         });
+        
+        $app['assetic.dumper'] = $app->share(function () use ($app) {
+            return new Dumper($app['assetic.asset_manager'], $app['assetic.lazy_asset_manager'], $app['assetic.asset_writer']);
+        });
 
         if(isset($app['twig'])) {
             $app['twig'] = $app->share($app->extend('twig', function ($twig, $app) {
                 $twig->addExtension(new TwigAsseticExtension($app['assetic.factory']));
                 return $twig;
             }));
+            
+            $app['assetic.lazy_asset_manager'] = $app->share($app->extend('assetic.lazy_asset_manager', function ($am, $app) {
+                $am->setLoader('twig', new TwigFormulaLoader($app['twig']));
+                return $am;
+            }));
+            
+            $app['assetic.dumper'] = $app->share($app->extend('assetic.dumper', function ($helper, $app) {
+                $helper->setTwig($app['twig'], $app['twig.loader.filesystem']);
+                return $helper;
+            }));     
         }
     }
-
+  
     /**
      * Bootstraps the application.
      *
